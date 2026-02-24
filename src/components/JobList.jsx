@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 
-export default function JobList({ jobs, openDetails, logout }) {
+export default function JobList({ jobs, openDetails, logout ,openTrends}) {
   const [saved, setSaved] = useState([]);
+ 
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("savedJobs")) || [];
@@ -25,6 +26,15 @@ export default function JobList({ jobs, openDetails, logout }) {
     <div className="dashboard">
 
   {/* HERO HEADER */}
+  <h2 className="welcome-title">Welcome Back 👋</h2>
+<p className="welcome-sub">Explore opportunities and grow your career</p>
+
+<button
+  style={{ maxWidth: "200px", marginBottom: "20px" }}
+  onClick={openTrends}
+>
+  View Job Trends 📊
+</button>
   <div className="hero">
     <h1 className="brand">ElevateJobs</h1>
     <p className="tagline">

@@ -4,6 +4,7 @@ import Signup from "./components/Signup";
 import JobList from "./components/JobList";
 import JobDetail from "./components/JobDetail";
 import ApplyForm from "./components/ApplyForm";
+import Trends from "./components/Trends";   // ✅ NEW
 import { jobs } from "./data/jobs";
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
             setPage("details");
           }}
           logout={() => setPage("login")}
+          openTrends={() => setPage("trends")}   // ✅ NEW
         />
       )}
 
@@ -35,10 +37,11 @@ export default function App() {
       )}
 
       {page === "apply" && (
-        <ApplyForm
-          job={selectedJob}
-          back={() => setPage("details")}
-        />
+        <ApplyForm job={selectedJob} back={() => setPage("details")} />
+      )}
+
+      {page === "trends" && (   /* ✅ NEW PAGE */
+        <Trends back={() => setPage("jobs")} />
       )}
     </div>
   );

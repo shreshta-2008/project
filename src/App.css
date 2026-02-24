@@ -1,5 +1,11 @@
 /* ===== GLOBAL BACKGROUND ===== */
+/* RESET (CRITICAL FOR CENTERING) */
+/* ===== ROOT FIX (must be first) ===== */
 
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -17,56 +23,118 @@ body {
   background-attachment: fixed;
 }
 
-/* AUTH */
+/* ========================================
+   AUTH (LOGIN + SIGNUP)
+======================================== */
+/* ========================================
+   AUTH WRAPPER (PERFECT CENTER)
+======================================== */
 
+.auth-wrapper {
+  min-height: 100vh;
+  width: 100%;
+
+  display: grid;          /* better than flex */
+  place-items: center;    /* exact center */
+
+  padding: 20px;
+
+  background: linear-gradient(135deg,#eef2ff,#e0e7ff,#f5f3ff);
+}
 .auth-bg {
-  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 20px;
+
+  /* aesthetic gradient background */
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff, #f5f3ff);
 }
 
+/* CARD */
 .auth-card {
-  width: 340px;
-  padding: 35px;
+  width: 360px;
+  max-width: 95%;
+  padding: 40px;
 
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(16px);
 
-  border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
 
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  color: white;
+  gap: 14px;
+
+  color: #111;
 }
 
+/* bigger signup */
 .auth-card.large {
-  width: 440px;
-  padding: 45px;
+  width: 460px;
+  padding: 48px;
 }
 
-input, textarea {
+/* heading visibility fix */
+.auth-card h2 {
+  text-align: center;
+  color: #111827;
+  font-weight: 700;
+}
+
+/* INPUTS */
+input,
+textarea {
   padding: 12px;
   border-radius: 10px;
-  border: none;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 14px;
 }
 
+input:focus,
+textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.15);
+}
+
+/* BUTTON */
 button {
   padding: 12px;
-  background: #2563eb;
+
+  background: linear-gradient(90deg,#4f46e5,#7c3aed);
   color: white;
+
   border: none;
   border-radius: 10px;
+
   cursor: pointer;
+  font-weight: 600;
+
+  transition: 0.25s;
 }
 
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(79,70,229,0.35);
+}
+
+/* switch link */
 .switch {
   text-align: center;
   cursor: pointer;
+  font-size: 14px;
+  color: #4f46e5;
 }
 
+.switch:hover {
+  text-decoration: underline;
+}
 /* DASHBOARD */
 
 .dashboard {
@@ -224,4 +292,123 @@ body::after {
   background: #2563eb;
   bottom: -120px;
   right: -120px;
+}
+/* ========================================
+   WELCOME HEADING FIX
+======================================== */
+
+.welcome-title {
+  font-size: 32px;
+  font-weight: 700;
+
+  background: linear-gradient(90deg, #4338ca, #7c3aed);
+  -webkit-background-clip: text;
+  color: transparent;
+
+  margin-bottom: 20px;
+}
+
+/* subtitle */
+.welcome-sub {
+  color: #555;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+/* ========================================
+   TRENDS PAGE
+======================================== */
+
+.trend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.trend-card {
+  padding: 18px;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  transition: 0.25s;
+}
+
+.trend-card:hover {
+  transform: translateY(-5px);
+}
+
+.trend-card h3 {
+  color: #4f46e5;
+  margin-bottom: 8px;
+}
+
+/* skills */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.skill-pill {
+  padding: 8px 14px;
+  background: #eef2ff;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #4338ca;
+}
+/* welcome title fix */
+.welcome-title {
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #4338ca, #7c3aed);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.welcome-sub {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* trends */
+.trend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.trend-card {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+/* ========================================
+   LOGIN FIXES
+======================================== */
+
+/* darker visible heading */
+.login-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #1f2937;   /* dark grey */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* demo credentials text */
+.demo-info {
+  font-size: 12px;
+  text-align: center;
+  color: #6366f1;
+  margin-bottom: 12px;
+}
+
+/* error message */
+.error-text {
+  color: #ef4444;
+  font-size: 13px;
+  margin-top: 5px;
+  text-align: center;
 }
