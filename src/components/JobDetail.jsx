@@ -1,11 +1,15 @@
 export default function JobDetail({ job, back, apply }) {
+  if (!job) return null;
+
   return (
     <div className="dashboard">
-      <button onClick={back}>⬅ Back</button>
 
-      <div className="job-card">
+      <button className="back-btn" onClick={back}>⬅ Back</button>
+
+      <div className="apply-card">
         <h2>{job.title}</h2>
-        <h4>{job.company}</h4>
+        <p><b>Company:</b> {job.company}</p>
+        <p><b>Location:</b> {job.location}</p>
         <p>{job.description}</p>
 
         <button onClick={apply}>Apply Now</button>
