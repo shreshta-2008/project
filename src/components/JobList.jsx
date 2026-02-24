@@ -23,6 +23,14 @@ export default function JobList({ jobs, openDetails, logout }) {
 
   return (
     <div className="dashboard">
+
+  {/* HERO HEADER */}
+  <div className="hero">
+    <h1 className="brand">ElevateJobs</h1>
+    <p className="tagline">
+      Discover opportunities. Build your future.
+    </p>
+  </div>
       <header className="dash-header">
         <h1>💼 Job Portal</h1>
         <button onClick={logout}>Logout</button>
