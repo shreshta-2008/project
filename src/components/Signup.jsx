@@ -1,14 +1,19 @@
 export default function Signup({ setPage }) {
   return (
-    <div className="auth">
-      <form className="card glass">
-        <h2>Create Account</h2>
-        <input placeholder="Name" required />
-        <input placeholder="Email" required />
-        <input type="password" placeholder="Password" required />
-        <button onClick={() => setPage("jobs")}>Sign Up</button>
+    <div className="auth-bg">
+      <form className="auth-card large">
+        <h1>Create Account</h1>
 
-        <p onClick={() => setPage("login")} className="link">
+        <input placeholder="Full Name" />
+        <input placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <input type="password" placeholder="Confirm Password" />
+
+        <button onClick={() => setPage("jobs")}>
+          Sign Up
+        </button>
+
+        <p className="switch" onClick={() => setPage("login")}>
           Already have account?
         </p>
       </form>

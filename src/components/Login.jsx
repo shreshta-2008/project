@@ -4,21 +4,20 @@ export default function Login({ setPage }) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
-  const handleSubmit = (e) => {
+  const submit = (e) => {
     e.preventDefault();
     setPage("jobs");
   };
 
   return (
-    <div className="auth">
-      <form onSubmit={handleSubmit} className="card glass">
-        <h2>Welcome Back</h2>
+    <div className="auth-bg">
+      <form onSubmit={submit} className="auth-card">
+        <h1>Welcome Back</h1>
 
         <input
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
         />
 
         <input
@@ -26,12 +25,11 @@ export default function Login({ setPage }) {
           placeholder="Password"
           value={pass}
           onChange={(e) => setPass(e.target.value)}
-          required
         />
 
         <button>Login</button>
 
-        <p onClick={() => setPage("signup")} className="link">
+        <p className="switch" onClick={() => setPage("signup")}>
           Create account
         </p>
       </form>

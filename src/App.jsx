@@ -5,28 +5,23 @@ import JobList from "./components/JobList";
 import JobDetail from "./components/JobDetail";
 import ApplyForm from "./components/ApplyForm";
 import { jobs } from "./data/jobs";
-import "./App.css";
 
 export default function App() {
   const [page, setPage] = useState("login");
   const [selectedJob, setSelectedJob] = useState(null);
 
-  const goToDetails = (job) => {
-    setSelectedJob(job);
-    setPage("details");
-  };
-
-  const goToApply = () => setPage("apply");
-
   return (
-    <div className="app">
+    <div>
       {page === "login" && <Login setPage={setPage} />}
       {page === "signup" && <Signup setPage={setPage} />}
 
       {page === "jobs" && (
         <JobList
           jobs={jobs}
-          openDetails={goToDetails}
+          openDetails={(job) => {
+            setSelectedJob(job);
+            setPage("details");
+          }}
           logout={() => setPage("login")}
         />
       )}
@@ -35,7 +30,7 @@ export default function App() {
         <JobDetail
           job={selectedJob}
           back={() => setPage("jobs")}
-          apply={goToApply}
+          apply={() => setPage("apply")}
         />
       )}
 

@@ -1,17 +1,46 @@
+import { useState, useEffect } from "react";
+
 export default function JobList({ jobs, openDetails, logout }) {
+  const [saved, setSaved] = useState([]);
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("savedJobs")) || [];
+    setSaved(data);
+  }, []);
+
+  const toggleSave = (id) => {
+    let updated;
+
+    if (saved.includes(id)) {
+      updated = saved.filter((j) => j !== id);
+    } else {
+      updated = [...saved, id];
+    }
+
+    setSaved(updated);
+    localStorage.setItem("savedJobs", JSON.stringify(updated));
+  };
+
   return (
-    <div className="container">
-      <header>
-        <h1>Job Portal</h1>
+    <div className="dashboard">
+      <header className="dash-header">
+        <h1>💼 Job Portal</h1>
         <button onClick={logout}>Logout</button>
       </header>
 
-      <div className="grid">
+      <div className="job-grid">
         {jobs.map((job) => (
-          <div key={job.id} className="card job">
-            <h3>{job.title}</h3>
+          <div key={job.id} className="job-card">
+
+            <div className="job-head">
+              <h3>{job.title}</h3>
+              <span onClick={() => toggleSave(job.id)}>
+                {saved.includes(job.id) ? "❤️" : "🤍"}
+              </span>
+            </div>
+
             <p>{job.company}</p>
-            <span>{job.location}</span>
+            <p>{job.location}</p>
 
             <button onClick={() => openDetails(job)}>
               View Details
